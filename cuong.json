@@ -1,0 +1,78 @@
+{
+    "name": "D-143",
+    "key": "Séance d'irradiation",
+    "options": [
+      {
+        "key": "A-342",
+        "label": "Actes d'irradiation en dose unique (A-342)",
+        "leadsTo": "NEXT"
+      },
+      {
+        "key": "A-205",
+        "label": "  Curiethérapie ou irradiation interne (A-205)",
+        "leadsTo": "28Z10"
+      },
+      {
+        "key": "A-170",
+        "label": " Technique spéciale d'irradiation externe (A-170)",
+        "leadsTo": "28Z11"
+      },
+      {
+        "key": "A-304",
+        "label": "RCMI (A-304)",
+        "leadsTo": "28Z18"
+      },
+      {
+        "key": "A-318",
+        "label": "Irradiation externe avec système de repositionnement (A-318)",
+        "leadsTo": "28Z23"
+      },
+      {
+        "key": "A-319",
+        "label": "Irradiation externe avec collimateur multilame ou imagerie portale (A-319)",
+        "leadsTo": "28Z24"
+      },
+      {
+        "key": "A-320",
+        "label": "Autre irradiation externe (A-320)",
+        "leadsTo": "28Z25"
+      },
+      {
+        "key": "NONE",
+        "label": "To something else...",
+        "leadsTo": "90Z02Z"
+      }
+    ],
+    "children": [
+      {
+        "key": "NEXT",
+        "title": "CM27 CMD26 CMD25 CMD01-23",
+        "options": [],
+        "children": []
+      },
+      {
+        "key": "28Z10",
+        "title": "GHM-28Z10-z"
+      },
+      {
+        "key": "28Z11",
+        "title": "GHM-28Z11-z"
+      },
+      {
+        "key": "28Z18",
+        "title": "GHM-28Z18-z"
+      },
+      {
+        "key": "28Z23",
+        "title": "GHM-28Z23-z"
+      },
+      {
+        "key": "28Z24",
+        "title": "GHM-28Z24-z"
+      },
+      {
+        "key": "90Z02Z",
+        "title": "GHM-90Z02Z G comportant au moins une erreur ou inclassable"
+      }
+    ]
+  }
