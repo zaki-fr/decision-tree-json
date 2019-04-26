@@ -1,11 +1,11 @@
 {
-    "name": "Séance d'irradiation",
     "key": "D-143",
+    "label": "Séance d'irradiation",
     "options": [
       {
         "key": "A-342",
         "label": "Actes d'irradiation en dose unique (A-342)",
-        "leadsTo": "NEXT"
+        "leadsTo": null
       },
       {
         "key": "A-205",
@@ -38,38 +38,12 @@
         "leadsTo": "28Z25"
       },
       {
-        "key": "NONE",
-        "label": "To something else...",
+        "key": "Other",
+        "label": "G comportant au moins une erreur ou inclassable",
         "leadsTo": "90Z02Z"
       }
     ],
     "children": [
-      {
-        "key": "NEXT",
-        "title": "CM27 CMD26 CMD25 CMD01-23",
-        "options": [
-          {
-            "key": "CM27",
-            "label": "CATÉGORIE MAJEURE N°27 (CM27)",
-            "leadsTo": "ref#CM27"
-          },
-          {
-            "key": "CMD26",
-            "label": "CATÉGORIE MAJEURE N°26 (CMD26)",
-            "leadsTo": "ref#CM26"
-          },
-          {
-            "key": "CMD25",
-            "label": "CATÉGORIE MAJEURE N°25 (CMD25)",
-            "leadsTo": "ref#CMD25"
-          },
-          {
-            "key": "CMD[01..23]",
-            "label": "CATÉGORIE MAJEURE N°01 - N°23",
-            "leadsTo": "ref#CMD[01..23]"
-          }
-        ]
-      },
       {
         "key": "28Z10",
         "title": "GHM-28Z10-z"
@@ -89,6 +63,10 @@
       {
         "key": "28Z24",
         "title": "GHM-28Z24-z"
+      },
+      {
+        "key": "28Z25",
+        "title": "GHM-28Z25-z"
       },
       {
         "key": "90Z02Z",
