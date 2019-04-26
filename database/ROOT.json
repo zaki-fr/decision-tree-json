@@ -1,0 +1,26 @@
+{
+    "key": "ROOT",
+    "title": "CM28 CM27 CMD26 CMD25 CMD01-23",
+    "options": [
+      {
+        "label": "CATÉGORIE MAJEURE N°28 (CM28)",
+        "ref": "CM28"
+      },
+      {
+        "label": "CATÉGORIE MAJEURE N°27 (CM27)",
+        "ref": "CM27"
+      },
+      {
+        "label": "CATÉGORIE MAJEURE N°26 (CMD26)",
+        "ref": "CM26"
+      },
+      {
+        "label": "CATÉGORIE MAJEURE N°25 (CMD25)",
+        "ref": "CMD25"
+      },
+      {
+        "label": "CATÉGORIE MAJEURE N°01 - N°23",
+        "ref": "CMD[01..23]"
+      }
+    ]
+}
