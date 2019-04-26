@@ -47,8 +47,28 @@
       {
         "key": "NEXT",
         "title": "CM27 CMD26 CMD25 CMD01-23",
-        "options": [],
-        "children": []
+        "options": [
+          {
+            "key": "CM27",
+            "label": "CATÉGORIE MAJEURE N°27 (CM27)",
+            "leadsTo": "ref#CM27"
+          },
+          {
+            "key": "CMD26",
+            "label": "CATÉGORIE MAJEURE N°26 (CMD26)",
+            "leadsTo": "ref#CM26"
+          },
+          {
+            "key": "CMD25",
+            "label": "CATÉGORIE MAJEURE N°25 (CMD25)",
+            "leadsTo": "ref#CMD25"
+          },
+          {
+            "key": "CMD[01..23]",
+            "label": "CATÉGORIE MAJEURE N°01 - N°23",
+            "leadsTo": "ref#CMD[01..23]"
+          }
+        ]
       },
       {
         "key": "28Z10",
