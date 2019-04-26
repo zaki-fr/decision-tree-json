@@ -1,0 +1,7 @@
+{
+    "name": "decision-tree-json",
+    "version": "v1.0.1",
+    "dependencies": {
+        "@ianwalter/decision-tree": "^2.1.5"
+    }
+}
