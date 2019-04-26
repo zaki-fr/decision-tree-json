@@ -1,5 +1,5 @@
 ### Setup Instructions
 To run decision tree:  
 `$ npm install`  
-`$ npm main`  
+`$ node main`
 ^ This produces the output of the decision tree
