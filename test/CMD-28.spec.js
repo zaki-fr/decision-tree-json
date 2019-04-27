@@ -1,4 +1,4 @@
-import DecisionTree from "../decision-tree"
+import DecisionTree from "../lib/decision-tree"
 import assert from 'assert'
 
 describe('CMD-28 CATÉGORIE MAJEURE DE DIAGNOSTIC N°28', function() {
