@@ -1,12 +1,20 @@
 import BaseError from '@ianwalter/base-error'
 import Path from 'path'
 
-function findItemByKey (items = [], key) {
+function findItemByKey(items = [], key) {
   for (let item of items) {
     if (item.key === key) {
       return item
     }
   }
+}
+
+function flatten(list) {
+  return list.reduce(function (a, b) {
+    return a.concat(Array.isArray(b) ? flatten(b) : b);
+  }, []).filter(function (elem) {
+    return typeof elem !== "undefined" && elem != null;
+  });
 }
 
 function parseNodes(path, node) {
@@ -23,8 +31,8 @@ function parseNodes(path, node) {
 }
 
 export default class {
-  constructor (path, file) {
-    const tree = this.build (path, file)
+  constructor(path, file) {
+    const tree = this.build(path, file)
     this.path = [tree]
     this.state = {}
 
@@ -33,7 +41,7 @@ export default class {
     this.noParent = `No parent node found to move to`
   }
 
-  set (key, value) {
+  set(key, value) {
     if (typeof key === 'object' && value === undefined) {
       this.state = key
     } else {
@@ -42,20 +50,20 @@ export default class {
     return this
   }
 
-  build (path, file) {
-    var root  = require(Path.join(path, file))
+  build(path, file) {
+    var root = require(Path.join(path, file))
     return parseNodes(path, root)
   }
 
-  current () {
+  current() {
     return this.path[this.path.length - 1]
   }
 
-  goToNode (node) {
+  goToNode(node) {
     return node ? this.path.push(node) && node : node
   }
 
-  getNodeFromLeadsTo (currentNode, { leadsTo, script }, params) {
+  getNodeFromLeadsTo(currentNode, { leadsTo, script }, params) {
     if (typeof script !== "undefined") {
       leadsTo = eval(script)
     }
@@ -63,7 +71,7 @@ export default class {
     return key ? findItemByKey(currentNode.children, key) : null
   }
 
-  next (params) {
+  next(params) {
     const currentNode = this.current()
     // Get the selected option key from state or extract it from an array if
     // multiple options can be selected.
@@ -92,7 +100,7 @@ export default class {
     throw new BaseError(this.noLead, selectedOptionKey, selectedOption)
   }
 
-  prev () {
+  prev() {
     const parentNode = this.path[this.path.length - 2]
     if (parentNode) {
       return this.path.pop()
@@ -100,7 +108,21 @@ export default class {
     throw new BaseError(this.noParent)
   }
 
-  pathKeys () {
+  pathKeys() {
     return this.path.map(({ key }) => key)
+  }
+
+  getleafs(children) {
+    var result = children.map((node) => {
+      return typeof node.children !== "undefined" ? this.getleafs(node.children) : (node.key || node.ref)
+    })
+    return result.filter(function (elem, pos) {
+      return result.indexOf(elem) == pos;
+    })
+  }
+
+  lastleafs() {
+    var current = this.current()
+    return typeof current.children !== "undefined" ? flatten(this.getleafs(current.children)) : []
   }
 }
