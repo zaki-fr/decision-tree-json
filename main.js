@@ -1,4 +1,4 @@
-var DecisionTree = require("./lib/decision-tree")
+var DecisionTree = require("@zaki-fr/decision-tree-json")
 const decisionTree = new DecisionTree(__dirname + "/database", "ROOT.json")
 
 decisionTree.set('attribute', 'D').next()
