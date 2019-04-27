@@ -1,6 +1,6 @@
 {
   "name": "@zaki-fr/decision-tree-json",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/decision-tree-json.js",
   "module": "lib/decision-tree-json.js",
   "scripts": {
