@@ -1,6 +1,6 @@
 {
     "name": "decision-tree-json",
-    "version": "v0.1.0",
+    "version": "0.1.0",
     "main": "lib/decision-tree.js",
     "module": "lib/decision-tree.js",
     "scripts": {
