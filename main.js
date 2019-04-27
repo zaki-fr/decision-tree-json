@@ -1,4 +1,4 @@
-var DecisionTree = require("./lib/decision-tree-json").default
+const DecisionTree = require("./lib/decision-tree-json").default
 const decisionTree = new DecisionTree(__dirname + "/database", "ROOT.json")
 
 function showOpts(index, opt) {

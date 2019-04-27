@@ -16,14 +16,7 @@ npm run dev
 
 ***Explanation***
 
-Load DecisionTree module
-
-```javascript
-var DecisionTree = require("./lib/decision-tree-json").default
-const decisionTree = new DecisionTree(__dirname + "/database", "ROOT.json")
-```
-
-JSON database structure
+Create JSON database structure `ROOT.json`
 ```javascript
 {
     "key": "ROOT",
@@ -57,6 +50,21 @@ JSON database structure
 }
 ```
 
+Load DecisionTree module using native Javascript
+
+```javascript
+var DecisionTree = require("@zaki-fr/decision-tree-json").default
+const decisionTree = new DecisionTree(__dirname + "/database", "ROOT.json")
+```
+
+Load DecisionTree module using ECMASCRIPT 6 (ES6) or TypeScript
+
+```javascript
+import DecisionTree from "@zaki-fr/decision-tree-json"
+const decisionTree = new DecisionTree(__dirname + "/database", "ROOT.json")
+```
+
+
 Set tree node position `ROOT` and option value `STATIC-28`
 ```javascript
 decisionTree.set('ROOT', 'STATIC-28').next()
@@ -88,5 +96,11 @@ console.log(result)
 Print navigated nodes by keys
 ```javascript
 var result = decisionTree.pathKeys()
+console.log(result)
+```
+
+Get all leafs from the current node
+```javascript
+var result = decisionTree.lastleafs()
 console.log(result)
 ```
