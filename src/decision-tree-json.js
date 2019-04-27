@@ -30,10 +30,16 @@ function parseNodes(path, node) {
   return node
 }
 
+function build(path, file) {
+  var root = require(Path.join(path, file))
+  return parseNodes(path, root)
+}
+
 export default class {
   constructor(path, file) {
-    const tree = this.build(path, file)
+    const tree = build(path, file)
     this.path = [tree]
+    this.trace = []
     this.state = {}
 
     this.noChildren = `No children found to move to`
@@ -50,11 +56,6 @@ export default class {
     return this
   }
 
-  build(path, file) {
-    var root = require(Path.join(path, file))
-    return parseNodes(path, root)
-  }
-
   current() {
     return this.path[this.path.length - 1]
   }
@@ -68,7 +69,7 @@ export default class {
       leadsTo = eval(script)
     }
     const key = typeof leadsTo === 'function' ? leadsTo(params) : leadsTo
-    return key ? findItemByKey(currentNode.children, key) : null
+    return findItemByKey(currentNode.children, key)
   }
 
   next(params) {
@@ -79,12 +80,12 @@ export default class {
     if (Array.isArray(selectedOptionKey) && selectedOptionKey.length === 1) {
       selectedOptionKey = selectedOptionKey[0]
     }
-
+    this.trace.push(selectedOptionKey)
     // Find the selected option object by it's key.
     const selectedOption = findItemByKey(currentNode.options, selectedOptionKey)
 
     // Move to the next node.
-    if (currentNode.children.length < 1) {
+    if (typeof currentNode.children === "undefined" || currentNode.children.length < 1) {
       // No children to move to!
       throw new BaseError(this.noChildren, currentNode)
     } else if (selectedOption && (selectedOption.leadsTo || selectedOption.script)) {
@@ -95,7 +96,6 @@ export default class {
       // multiple options selected).
       return this.goToNode(this.getNodeFromLeadsTo(currentNode, currentNode, params))
     }
-
     // Throw an error if the next node to move to can't be determined.
     throw new BaseError(this.noLead, selectedOptionKey, selectedOption)
   }
@@ -103,13 +103,18 @@ export default class {
   prev() {
     const parentNode = this.path[this.path.length - 2]
     if (parentNode) {
+      this.trace.pop()
       return this.path.pop()
     }
     throw new BaseError(this.noParent)
   }
 
-  pathKeys() {
+  history() {
     return this.path.map(({ key }) => key)
+  }
+
+  journey() {
+    return this.trace
   }
 
   getleafs(children) {

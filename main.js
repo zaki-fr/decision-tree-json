@@ -28,5 +28,6 @@ decisionTree.current().options.forEach(opt => showOpts(index, opt))
 showGHMs(index, decisionTree.lastleafs())
 index++
 decisionTree.set('D-143', 'A-205').next()
-console.log("DECISION PATH\t", decisionTree.pathKeys())
-console.log("DECISION RESULT\t", decisionTree.current())
+console.log("DECISION HISTORY\t", decisionTree.history())
+console.log("DECISION JOURNEY\t", decisionTree.journey())
+console.log("DECISION RESULT\t\t", decisionTree.current())

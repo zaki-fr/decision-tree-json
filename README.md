@@ -2,19 +2,99 @@
 
 A decision-tree library that works with JSON files database
 
-***Installation***
+BUILD SOURCE
+---------------
+
+*This section describes some hints for developer who want to contribute to this library.*
+
+***Get Sourcecode***
+
+```javascript
+git clone https://github.com/zaki-fr/decision-tree-json.git
+```
+
+***Install Dependancies***
 
 ```javascript
 npm install
 ```
 
-***Test Library***
+***Create JSON database `database-path/new-db.json` file***
+
+```javascript
+{
+    "key": "ROOT",
+    "title": "A decision tree demonstration",
+    "options": [
+      {
+        "key": "STATIC-NODE",
+        "label": "A static traversal node option",
+        "leadsTo": "STATIC-28"
+      },
+      {
+        "key": "RULE-NODE",
+        "label": "A node with dynamic rule option",
+        "script": "params => params.age > 28 ? 'OVER-28': 'UNDER-28'"
+      }
+    ],
+    "children": [
+      {
+        "label": "A static node with children nodes",
+        "key": "STATIC-28",
+        "options": [ {other-options} ],
+        "children": [ {other-nodes} ]
+      },
+      {
+        "label": "A node with age > 28",
+        "key": "OVER-28"
+      },
+      {
+        "label": "A node with age under 28",
+        "key": "UNDER-28"
+      }
+    ]
+}
+```
+
+***Create Test Spec `new-db.spec.js`***
+
+```javascript
+import DecisionTree from "@zaki-fr/decision-tree-json"
+import assert from 'assert'
+
+describe('Test `new-db` database', function() {
+    var decisionTree = null
+    var root = null
+    beforeEach(function() {
+        decisionTree = new DecisionTree(
+            __dirname + "/database-path",
+            "new-db.json"
+        )
+        root = decisionTree.current()
+    });
+    it('should return STATIC-28 node as you expected', function() {
+        var result = decisionTree.set(root.key, 'STATIC-28').next()
+        assert.equal(result.key, 'STATIC-28')
+    });
+})
+```
+
+***Test Engine/Database***
+
+```javascript
+npm test
+```
+
+***Test Library Usage***
 
 ```javascript
 npm run dev
 ```
 
-***Explanation***
+HOW TO USE
+---------------
+
+*This section describes for community users who want to use this library into their applications.*
 
 Create JSON database structure `ROOT.json`
 ```javascript
@@ -53,7 +133,7 @@ Create JSON database structure `ROOT.json`
 Load DecisionTree module using native Javascript
 
 ```javascript
-var DecisionTree = require("@zaki-fr/decision-tree-json").default
+const DecisionTree = require("@zaki-fr/decision-tree-json").default
 const decisionTree = new DecisionTree(__dirname + "/database", "ROOT.json")
 ```
 
@@ -95,7 +175,13 @@ console.log(result)
 
 Print navigated nodes by keys
 ```javascript
-var result = decisionTree.pathKeys()
+var result = decisionTree.history()
+console.log(result)
+```
+
+Print navigated options by keys
+```javascript
+var result = decisionTree.journey()
 console.log(result)
 ```
 
