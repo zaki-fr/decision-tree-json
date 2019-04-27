@@ -3,37 +3,57 @@ const decisionTree = new DecisionTree(__dirname + "/database", "ROOT.json")
 
 function showOpts(index, opt) {
   var tabs = ''; for (i = 0; i < index; i++) tabs += ' '
-  console.log(tabs + index + '. Option ' + opt.key + ' (' + opt.label + ')')
+  console.log(tabs + ' - Option ' + opt.key + ' (' + opt.label + ')')
 }
-function showGHMs(index, GHMs) {
+function showGHMs(index, tree) {
   var tabs = ''; for (i = 0; i < index; i++) tabs += ' '
-  console.log(tabs + '\t*GHMs: (' + GHMs.join() + ')')
+  var lastleafs = tree.lastleafs()
+  var GHMs = lastleafs.length ? lastleafs.join() : tree.current().key
+  console.log(tabs + index + '. ' + tree.lastsel().key + ' *GHMs: (' + GHMs + ')')
 }
-var index = 1
-console.log("DECISION ROOT")
-decisionTree.set('ROOT', 'CMD-28').next()
-decisionTree.current().options.forEach(opt => showOpts(index, opt))
-showGHMs(index, decisionTree.lastleafs())
-index++
-decisionTree.set('CMD-28', 'NB-S').next({ seances: 1 })
-decisionTree.current().options.forEach(opt => showOpts(index, opt))
-showGHMs(index, decisionTree.lastleafs())
-index++
-decisionTree.set('NB-S', 'D-145').next()
-decisionTree.current().options.forEach(opt => showOpts(index, opt))
-showGHMs(index, decisionTree.lastleafs())
-index++
-decisionTree.set('D-145', 'D-143').next()
-decisionTree.current().options.forEach(opt => showOpts(index, opt))
-showGHMs(index, decisionTree.lastleafs())
-index++
-decisionTree.set('D-143', 'A-205').next()
-console.log("DECISION HISTORY\t", decisionTree.history())
-console.log("DECISION JOURNEY\t", decisionTree.journey())
-console.log("DECISION RESULT\t\t", decisionTree.current())
-decisionTree.current().prev()
-console.log("DECISION HISTORY\t", decisionTree.history())
-console.log("DECISION JOURNEY\t", decisionTree.journey())
-decisionTree.current().prev()
-console.log("DECISION HISTORY\t", decisionTree.history())
-console.log("DECISION JOURNEY\t", decisionTree.journey())
+function getKeyValue(params) {
+  return Object.keys(params).map(key => {
+    return key + "=" + params[key]
+  })
+}
+function diagnostic(index, arrays, params) {
+  let last = null
+  arrays.forEach(pos => {
+    if (last) {
+      decisionTree.set(last, pos).next(params)
+      showGHMs(index, decisionTree)
+      var current = decisionTree.current()
+      current.options ? current.options.forEach(opt => showOpts(index, opt)) : null
+      index++
+    }
+    last = pos
+  })
+  return index
+}
+function showResult() {
+  console.log("")
+  console.log(" HISTORY:", decisionTree.history().join(', '))
+  console.log(" JOURNEY:", decisionTree.journey().map(trace => trace.params ? trace.key + '(' + getKeyValue(trace.params) + ')' : trace.key).join(', '))
+  console.log("")
+}
+function main() {
+  try {
+    var index = 1
+    index = diagnostic(index, ['ROOT', 'CMD-28', 'NB-S', 'D-145', 'D-143', 'A-205'], { sessions: 1, age: 28 })
+    // back to once node
+    decisionTree.prev(); index--
+    index = diagnostic(index, ['D-143', 'A-170'])
+    showResult()
+    // new session with unterminated node
+    decisionTree.reset(); index = 1
+    index = diagnostic(index, ['ROOT', 'CMD-28', 'NB-S', 'D-145'], { sessions: 1, age: 28 })
+    showResult()
+    // new session with NULL termiated condition
+    decisionTree.reset(); index = 1
+    index = diagnostic(index, ['ROOT', 'CMD-28', 'NB-S', 'D-145', 'D-143', 'A-342'], { sessions: 1, age: 28 })
+    showResult()
+  } catch (ex) {
+    console.log(ex.message)
+  }
+}
+main()

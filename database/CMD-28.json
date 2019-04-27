@@ -5,7 +5,7 @@
     {
       "key": "NB-S",
       "label": "Nb Séances",
-      "script": "params => params.seances > 0 ? 'NB-S' : null"
+      "script": "params => params.sessions > 0 ? 'NB-S' : null"
     }
   ],
   "children": [
@@ -70,7 +70,7 @@
             },
             {
               "key": "Other",
-              "label": "Séance d'aphérèse sanguine (D-054)",
+              "label": "G comportant au moins une erreur ou inclassable",
               "leadsTo": "90Z02Z"
             }
           ],

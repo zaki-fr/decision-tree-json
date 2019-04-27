@@ -80,7 +80,9 @@ export default class {
     if (Array.isArray(selectedOptionKey) && selectedOptionKey.length === 1) {
       selectedOptionKey = selectedOptionKey[0]
     }
-    this.trace.push(selectedOptionKey)
+    let traceItem = { key: selectedOptionKey }
+    params ? traceItem.params = params: null
+    this.trace.push(traceItem)
     // Find the selected option object by it's key.
     const selectedOption = findItemByKey(currentNode.options, selectedOptionKey)
 
@@ -109,12 +111,22 @@ export default class {
     throw new BaseError(this.noParent)
   }
 
+  reset() {
+    while(this.path.length > 1) {
+      this.prev()
+    }
+  }
+
   history() {
     return this.path.map(({ key }) => key)
   }
 
   journey() {
     return this.trace
+  }
+
+  lastsel() {
+    return this.trace[this.trace.length-1]
   }
 
   getleafs(children) {
