@@ -1,4 +1,4 @@
-import DecisionTree from "../lib/decision-tree"
+import DecisionTree from "../lib/decision-tree-json"
 import assert from 'assert'
 
 describe('D-143 Séance d\'irradiation', function() {
