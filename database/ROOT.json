@@ -1,26 +1,53 @@
 {
     "key": "ROOT",
-    "title": "CM28 CM27 CMD26 CMD25 CMD01-23",
+    "title": "CMD-28 CM-27 CMD-26 CMD-25 CMD-[01..23]",
     "options": [
       {
+        "key": "CMD-28",
         "label": "CATÉGORIE MAJEURE N°28 (CM28)",
-        "ref": "CM28"
+        "leadsTo": "CMD-28"
+      },
+      {
+        "key": "CM-27",
+        "label": "CATÉGORIE MAJEURE N°27 (CM27)",
+        "leadsTo": "CMD-27"
+      },
+      {
+        "key": "CMD-26",
+        "label": "CATÉGORIE MAJEURE N°26 (CMD26)",
+        "leadsTo": "CMD-26"
+      },
+      {
+        "key": "CMD-25",
+        "label": "CATÉGORIE MAJEURE N°25 (CMD25)",
+        "leadsTo": "CMD-25"
+      },
+      {
+        "key": "CMD-[01..23]",
+        "label": "CATÉGORIE MAJEURE N°01 - N°23",
+        "leadsTo": "CMD-[01..23]"
+      }
+    ],
+    "children": [
+      {
+        "label": "CATÉGORIE MAJEURE N°28 (CM28)",
+        "ref": "CMD-28"
       },
       {
         "label": "CATÉGORIE MAJEURE N°27 (CM27)",
-        "ref": "CM27"
+        "key": "CM-27"
       },
       {
         "label": "CATÉGORIE MAJEURE N°26 (CMD26)",
-        "ref": "CM26"
+        "key": "CMD-26"
       },
       {
         "label": "CATÉGORIE MAJEURE N°25 (CMD25)",
-        "ref": "CMD25"
+        "key": "CMD-25"
       },
       {
         "label": "CATÉGORIE MAJEURE N°01 - N°23",
-        "ref": "CMD[01..23]"
+        "key": "CMD-[01..23]"
       }
     ]
 }

@@ -9,12 +9,12 @@
       },
       {
         "key": "A-205",
-        "label": "  Curiethérapie ou irradiation interne (A-205)",
+        "label": "Curiethérapie ou irradiation interne (A-205)",
         "leadsTo": "28Z10"
       },
       {
         "key": "A-170",
-        "label": " Technique spéciale d'irradiation externe (A-170)",
+        "label": "Technique spéciale d'irradiation externe (A-170)",
         "leadsTo": "28Z11"
       },
       {
