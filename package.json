@@ -6,7 +6,7 @@
     "scripts": {
         "test": "npm run build && mocha --require @babel/register test/**/*.spec.js",
         "build": "node_modules/@babel/cli/bin/babel.js src --out-dir lib",
-        "prepublish": "npm run build"
+        "prepublish": "npm run build && npm test"
     },
     "dependencies": {
         "@babel/runtime": "^7.3.4",
