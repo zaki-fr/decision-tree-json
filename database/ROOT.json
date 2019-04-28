@@ -5,7 +5,7 @@
       {
         "key": "CMD-28",
         "label": "CATÉGORIE MAJEURE N°28 (CM28)",
-        "leadsTo": "CMD-28"
+        "script": "params => params.sessions > 0 ? 'CMD-28' : 'CM-27'"
       },
       {
         "key": "CM-27",

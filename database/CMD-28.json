@@ -3,121 +3,109 @@
   "key": "CMD-28",
   "options": [
     {
-      "key": "NB-S",
-      "label": "Nb Séances",
-      "script": "params => params.sessions > 0 ? 'NB-S' : null"
+      "key": "D-145",
+      "label": "Motif de séance (D-145)",
+      "leadsTo": "D-145"
+    },
+    {
+      "key": "Other",
+      "label": "Pas motif de séance (Other)",
+      "leadsTo": "90Z01Z"
     }
   ],
   "children": [
     {
-      "key": "NB-S",
+      "key": "D-145",
+      "label": "Motif de séance (D-145)",
       "options": [
         {
-          "key": "D-145",
-          "label": "Motif de séance (D-145)",
-          "leadsTo": "D-145"
+          "key": "D-113",
+          "label": "Séance d'épuration extrarénale (D-113)",
+          "leadsTo": "D-113"
+        },
+        {
+          "key": "D-114",
+          "label": "Séance de chimiothérapie pour tumeur maligne (D-114)",
+          "leadsTo": "28Z07"
+        },
+        {
+          "key": "D-063",
+          "label": "Séance de chimiothérapie pour affection non tumorale (D-063)",
+          "leadsTo": "28Z17"
+        },
+        {
+          "key": "D-142",
+          "label": "Préparation à une irradiation externe (D-142)",
+          "leadsTo": "D-142"
+        },
+        {
+          "key": "D-143",
+          "label": "Séance d'irradiation (D-143)",
+          "leadsTo": "D-143"
+        },
+        {
+          "key": "D-139",
+          "label": "Séance de transfusion sanguine (D-139)",
+          "leadsTo": "28Z14"
+        },
+        {
+          "key": "D-047",
+          "label": "Séance d'oxygénothérapie hyperbare en caisson (D-047)",
+          "leadsTo": "28Z15"
+        },
+        {
+          "key": "D-054",
+          "label": "Séance d'aphérèse sanguine (D-054)",
+          "leadsTo": "28Z16"
         },
         {
           "key": "Other",
-          "label": "Pas motif de séance (Other)",
-          "leadsTo": "90Z01Z"
+          "label": "G comportant au moins une erreur ou inclassable",
+          "leadsTo": "90Z02Z"
         }
       ],
       "children": [
         {
-          "key": "D-145",
-          "label": "Motif de séance (D-145)",
-          "options": [
-            {
-              "key": "D-113",
-              "label": "Séance d'épuration extrarénale (D-113)",
-              "leadsTo": "D-113"
-            },
-            {
-              "key": "D-114",
-              "label": "Séance de chimiothérapie pour tumeur maligne (D-114)",
-              "leadsTo": "28Z07"
-            },
-            {
-              "key": "D-063",
-              "label": "Séance de chimiothérapie pour affection non tumorale (D-063)",
-              "leadsTo": "28Z17"
-            },
-            {
-              "key": "D-142",
-              "label": "Préparation à une irradiation externe (D-142)",
-              "leadsTo": "D-142"
-            },
-            {
-              "key": "D-143",
-              "label": "Séance d'irradiation (D-143)",
-              "leadsTo": "D-143"
-            },
-            {
-              "key": "D-139",
-              "label": "Séance de transfusion sanguine (D-139)",
-              "leadsTo": "28Z14"
-            },
-            {
-              "key": "D-047",
-              "label": "Séance d'oxygénothérapie hyperbare en caisson (D-047)",
-              "leadsTo": "28Z15"
-            },
-            {
-              "key": "D-054",
-              "label": "Séance d'aphérèse sanguine (D-054)",
-              "leadsTo": "28Z16"
-            },
-            {
-              "key": "Other",
-              "label": "G comportant au moins une erreur ou inclassable",
-              "leadsTo": "90Z02Z"
-            }
-          ],
-          "children": [
-            {
-              "ref": "D-113",
-              "label": "Ref: Séance d'épuration extrarénale (D-113)"
-            },
-            {
-              "ref": "D-142",
-              "label": "Ref: Préparation à une irradiation externe (D-142)"
-            },
-            {
-              "ref": "D-143",
-              "label": "Ref: Séance d'irradiation (D-143)"
-            },
-            {
-              "key": "28Z07",
-              "title": "GHM-28Z07-z"
-            },
-            {
-              "key": "28Z17",
-              "title": "GHM-28Z17-z"
-            },
-            {
-              "key": "28Z14",
-              "title": "GHM-28Z14-z"
-            },
-            {
-              "key": "28Z15",
-              "title": "GHM-28Z15-z"
-            },
-            {
-              "key": "28Z16",
-              "title": "GHM-28Z16-z"
-            },
-            {
-              "key": "90Z02Z",
-              "title": "GHM-90Z02Z G comportant au moins une erreur ou inclassable"
-            }
-          ]
+          "ref": "D-113",
+          "label": "Ref: Séance d'épuration extrarénale (D-113)"
         },
         {
-          "key": "90Z01Z",
-          "label": "G comportant au moins une erreur ou inclassable"
+          "ref": "D-142",
+          "label": "Ref: Préparation à une irradiation externe (D-142)"
+        },
+        {
+          "ref": "D-143",
+          "label": "Ref: Séance d'irradiation (D-143)"
+        },
+        {
+          "key": "28Z07",
+          "title": "GHM-28Z07-z"
+        },
+        {
+          "key": "28Z17",
+          "title": "GHM-28Z17-z"
+        },
+        {
+          "key": "28Z14",
+          "title": "GHM-28Z14-z"
+        },
+        {
+          "key": "28Z15",
+          "title": "GHM-28Z15-z"
+        },
+        {
+          "key": "28Z16",
+          "title": "GHM-28Z16-z"
+        },
+        {
+          "key": "90Z02Z",
+          "title": "GHM-90Z02Z G comportant au moins une erreur ou inclassable"
         }
       ]
+    },
+    {
+      "key": "90Z01Z",
+      "label": "G comportant au moins une erreur ou inclassable"
     }
   ]
 }

@@ -39,18 +39,18 @@ function showResult() {
 function main() {
   try {
     var index = 1
-    index = diagnostic(index, ['ROOT', 'CMD-28', 'NB-S', 'D-145', 'D-143', 'A-205'], { sessions: 1, age: 28 })
+    index = diagnostic(index, ['ROOT', 'CMD-28', 'D-145', 'D-143', 'A-205'], { sessions: 1, age: 28 })
     // back to once node
     decisionTree.prev(); index--
     index = diagnostic(index, ['D-143', 'A-170'])
     showResult()
     // new session with unterminated node
     decisionTree.reset(); index = 1
-    index = diagnostic(index, ['ROOT', 'CMD-28', 'NB-S', 'D-145'], { sessions: 1, age: 28 })
+    index = diagnostic(index, ['ROOT', 'CMD-28', 'D-145'], { sessions: 1, age: 28 })
     showResult()
     // new session with NULL termiated condition
     decisionTree.reset(); index = 1
-    index = diagnostic(index, ['ROOT', 'CMD-28', 'NB-S', 'D-145', 'D-143', 'A-342'], { sessions: 1, age: 28 })
+    index = diagnostic(index, ['ROOT', 'CMD-28', 'D-145', 'D-143', 'A-342'], { sessions: 1, age: 28 })
     showResult()
   } catch (ex) {
     console.log(ex.message)

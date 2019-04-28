@@ -5,7 +5,7 @@
       {
         "key": "A-342",
         "label": "Actes d'irradiation en dose unique (A-342)",
-        "leadsTo": null
+        "leadsTo": "CM-27"
       },
       {
         "key": "A-205",
@@ -44,6 +44,10 @@
       }
     ],
     "children": [
+      {
+        "key": "CM-27",
+        "title": "CATÉGORIE MAJEURE N°27 (CM27)"
+      },
       {
         "key": "28Z10",
         "title": "GHM-28Z10-z"
