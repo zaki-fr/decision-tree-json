@@ -11,12 +11,15 @@ describe('D-143 Séance d\'irradiation', function() {
     it('should return 8 options of D-143 code for selection', function() {
         assert.equal(root.options.length, 8)
     });
-    it('should return 8 possible GHM codes of D-143 Séance', function() {
-        assert.equal(root.children.length, 8)
+    it('should return 7 possible GHM codes of D-143 Séance', function() {
+        assert.equal(root.children.length, 7)
     });
-    it('should return CM-27 code when the option is A-342', function() {
-        var result = decisionTree.set(root.key, 'A-342').next()
-        assert.equal(result.key, 'CM-27')
+    it('should return `BaseError` exception when the option is A-342', function() {
+        try {
+            decisionTree.set(root.key, 'A-342').next()
+        } catch(ex) {
+            assert.equal(ex.name, 'BaseError')
+        }
     });
     it('should return 28Z10 GHM code when the option is A-205', function() {
         var result = decisionTree.set(root.key, 'A-205').next()
