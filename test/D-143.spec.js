@@ -1,4 +1,4 @@
-import DecisionTree from "../decision-tree"
+import DecisionTree from "../lib/decision-tree-json"
 import assert from 'assert'
 
 describe('D-143 Séance d\'irradiation', function() {
@@ -11,8 +11,15 @@ describe('D-143 Séance d\'irradiation', function() {
     it('should return 8 options of D-143 code for selection', function() {
         assert.equal(root.options.length, 8)
     });
-    it('should return 6 possible GHM codes of D-143 Séance', function() {
+    it('should return 7 possible GHM codes of D-143 Séance', function() {
         assert.equal(root.children.length, 7)
+    });
+    it('should return `BaseError` exception when the option is A-342', function() {
+        try {
+            decisionTree.set(root.key, 'A-342').next()
+        } catch(ex) {
+            assert.equal(ex.name, 'BaseError')
+        }
     });
     it('should return 28Z10 GHM code when the option is A-205', function() {
         var result = decisionTree.set(root.key, 'A-205').next()

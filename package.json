@@ -1,24 +1,46 @@
 {
-    "name": "decision-tree-json",
-    "version": "v1.0.1",
-    "scripts": {
-        "test": "mocha --require @babel/register test/**/*.spec.js"
-    },
-    "dependencies": {
-        "@babel/runtime": "^7.3.4",
-        "@ianwalter/base-error": "^4.0.3",
-        "@ianwalter/decision-tree": "^2.1.5"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.1.2",
-        "@babel/core": "^7.1.2",
-        "@babel/node": "^7.0.0",
-        "@babel/preset-env": "^7.1.0",
-        "@babel/register": "^7.0.0",
-        "mocha": "^6.1.4",
-        "chai": "^4.2.0"
-    },
-    "eslintConfig": {
-        "root": true
-    }
+  "name": "@zaki-fr/decision-tree-json",
+  "version": "0.1.2",
+  "main": "lib/decision-tree-json.js",
+  "module": "lib/decision-tree-json.js",
+  "scripts": {
+    "test": "npm run build && mocha --require @babel/register test/**/*.spec.js",
+    "build": "node_modules/@babel/cli/bin/babel.js src --out-dir lib",
+    "prepublish": "npm run build",
+    "dev": "npm run build && node main"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.4.4",
+    "@ianwalter/base-error": "^4.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  },
+  "eslintConfig": {
+    "root": true
+  },
+  "description": "A decision-tree library that works with JSON files database",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaki-fr/decision-tree-json.git"
+  },
+  "keywords": [
+    "decision-tree"
+  ],
+  "author": "ZAKI-FR",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zaki-fr/decision-tree-json/issues"
+  },
+  "homepage": "https://github.com/zaki-fr/decision-tree-json#readme"
 }
