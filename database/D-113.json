@@ -1,3 +1,53 @@
 {
-    
+    "name": "D-113",
+    "key": "Séanced'épuration extrarénale",
+    "options": [
+        {
+            "key": "A-180",
+            "label": "Entrainement à la dialyse péritonéale automatisée",
+            "leadsTo": "28Z01"
+        },
+        {
+            "key": "A-181",
+            "label": "Entrainement à la dialyse péritonéale continue\t ambulatoirentelligence",
+            "leadsTo": "28Z02"
+        },
+        {
+            "key": "A-234",
+            "label": "Entrainment á l'hémodialyse(A-234)",
+            "leadsTo": "28Z03"
+        },
+        {
+            "key": "D-030",
+            "label": "Séance d'hémodialyse (D-030)",
+            "leadsTo": "28Z04"
+        },
+        {
+            "key": "NONE",
+            "label": "To something else...",
+            "leadsTo": "90Z02Z"
+        }
+    ],
+"children": [
+  {
+    "key": "28Z01",
+    "title": "GHM-28Z01-z"
+  },
+  {
+    "key": "28Z02",
+    "title": "GHM-28Z02-z"
+  },
+  {
+    "key": "28Z03",
+    "title": "GHM-28Z03-z"
+  },
+  {
+    "key": "28Z04",
+    "title": "GHM-28Z04-z"
+  },
+  {
+    "key": "90Z02Z",
+    "title": "GHM-90Z02Z G comportant au moins une erreur ou inclassable"
+  }
+]
 }
