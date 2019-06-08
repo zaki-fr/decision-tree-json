@@ -37,7 +37,7 @@ describe('CMD-28 CATÉGORIE MAJEURE DE DIAGNOSTIC N°28', function() {
         assert.equal(result.key, 'D-145')
         result = decisionTree.set(result.key, 'D-142').next()
         assert.equal(result.key, 'D-142')
-        assert.equal(result.options.length, 5)
+        assert.equal(result.options.length, 0)
     });
     it('should return D-145/D-143 node with 8 options', function() {
         var result = decisionTree.set(root.key, 'D-145').next()
